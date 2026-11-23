@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaskFlow Pro - Smart productivity and task management dashboard.">
+    <title>TaskFlow Pro | Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">✓</div>
+            <h2>TaskFlow<span>Pro</span></h2>
+        </div>
+
+        <p class="menu-heading">WORKSPACE</p>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-filter="all">
+                <span>▦</span> Dashboard
+            </button>
+
+            <button class="nav-item" data-filter="active">
+                <span>◷</span> My Tasks
+            </button>
+
+            <button class="nav-item" data-filter="completed">
+                <span>✓</span> Completed
+            </button>
+        </nav>
+
+        <p class="menu-heading category-heading">CATEGORIES</p>
+
+        <div class="category-menu">
+            <button class="category-link" data-category="Work">
+                <span class="dot work-dot"></span> Work
+            </button>
+
+            <button class="category-link" data-category="Personal">
+                <span class="dot personal-dot"></span> Personal
+            </button>
+
+            <button class="category-link" data-category="Study">
+                <span class="dot study-dot"></span> Study
+            </button>
+        </div>
+
+        <div class="sidebar-bottom">
+            <p>Made for better productivity.</p>
+            <small>TaskFlow Pro © 2026</small>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="welcome-text">PRODUCTIVITY WORKSPACE</p>
+                <h1>Dashboard</h1>
+                <p class="subtitle">Manage your work and achieve your goals.</p>
+            </div>
+
+            <div class="topbar-actions">
+                <button id="themeToggle" class="icon-btn" title="Toggle theme">
+                    ◐
+                </button>
+
+                <button id="exportBtn" class="export-btn">
+                    ↓ Export
+                </button>
+            </div>
+
+        </header>
+
+        <!-- WELCOME BANNER -->
+        <section class="welcome-banner">
+            <div>
+                <p>YOUR PRODUCTIVITY JOURNEY</p>
+                <h2>Stay focused. Get things done.</h2>
+                <span>Small steps every day create big results.</span>
+            </div>
+            <div class="banner-icon">✦</div>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Total Tasks</span>
+                    <span class="stat-icon purple">▦</span>
+                </div>
+                <h2 id="totalTasks">0</h2>
+                <p>All your tasks</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>In Progress</span>
+                    <span class="stat-icon orange">◷</span>
+                </div>
+                <h2 id="activeTasks">0</h2>
+                <p>Tasks to complete</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Completed</span>
+                    <span class="stat-icon green">✓</span>
+                </div>
+                <h2 id="completedTasks">0</h2>
+                <p>Successfully finished</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <span>Overdue</span>
+                    <span class="stat-icon red">!</span>
+                </div>
+                <h2 id="overdueTasks">0</h2>
+                <p>Past due date</p>
+            </div>
+
+        </section>
+
+        <!-- PRODUCTIVITY PROGRESS -->
+        <section class="progress-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Productivity Overview</h2>
+                    <p>Your overall task completion progress</p>
+                </div>
+
+                <strong id="progressPercentage">0%</strong>
+            </div>
+
+            <div class="progress-track">
+                <div id="progressBar" class="progress-fill"></div>
+            </div>
+
+        </section>
+
+        <!-- ADD TASK FORM -->
+        <section class="task-form-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Create New Task</h2>
+                    <p>Add your next goal to the workspace.</p>
+                </div>
+            </div>
+
+            <form id="taskForm">
+
+                <div class="form-group full-width">
+                    <label for="taskInput">Task Name</label>
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="What needs to be done?"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="taskCategory">Category</label>
+                    <select id="taskCategory">
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Study">Study</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDate">Due Date</label>
+                    <input type="date" id="taskDate" required>
+                </div>
+
+                <div class="form-group submit-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="add-btn">
+                        + Create Task
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- TASK MANAGEMENT -->
+        <section class="tasks-section">
+
+            <div class="section-heading task-heading">
+                <div>
+                    <h2>My Tasks</h2>
+                    <p>Organize and track your daily activities.</p>
+                </div>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search tasks..."
+                >
+            </div>
+
+            <div class="task-toolbar">
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <select id="priorityFilter" aria-label="Filter by priority">
+                    <option value="all">All priorities</option>
+                    <option value="High">High priority</option>
+                    <option value="Medium">Medium priority</option>
+                    <option value="Low">Low priority</option>
+                </select>
+
+            </div>
+
+            <div id="taskList" class="task-list"></div>
+
+            <p id="emptyMessage" class="empty-message">
+                No tasks yet. Create your first task!
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
